@@ -25,7 +25,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "/list.action", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public  String toBookList(Model model){
         List<Book> list = this.bookService.getBookList(0, 100);
         model.addAttribute("list", list);
@@ -34,13 +34,13 @@ public class BookController {
         }
         return "list";
     }
-    @RequestMapping(value="/detail/{bookId}.action", method = RequestMethod.GET)
+    @RequestMapping(value="/detail/{bookId}", method = RequestMethod.GET)
     public String detailBook(@PathVariable("bookId") Integer bookId, Model model){
         Book book = this.bookService.getBookById(bookId);
         model.addAttribute("book", book);
         return "detail";
     }
-    @RequestMapping(value = "/add.action", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
     @ResponseBody
     public String add(Book book){
         Book hasBook = bookService.getBookById(book.getBookId());

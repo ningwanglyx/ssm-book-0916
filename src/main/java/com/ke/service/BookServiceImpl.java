@@ -25,8 +25,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBookList(int start, int pageNum) {
-        List<Book> list = this.bookMapper.queryBookList(start, pageNum);
+    public List<Book> getBookList(int offset, int limit) {
+        List<Book> list = this.bookMapper.queryBookList(offset, limit);
         return list;
     }
 
