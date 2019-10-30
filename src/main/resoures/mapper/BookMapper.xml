@@ -5,7 +5,14 @@
 <!--  -->
 <mapper namespace="com.ke.mapper.BookMapper">
     <select id="queryBookById" parameterType="integer" resultType="Book">
-        select * from book where book_id = #{bookId}
+        select * from book
+
+        where 1 =1
+        <if test="bookId != null">
+            and book_id = #{bookId}
+        </if>
+
+
     </select>
 
     <update id="addBook" parameterType="Book">
@@ -28,4 +35,74 @@
         limit #{offset}, #{limit}
     </select>
 
+    <select id = "getBookByIdAndName" resultType="Book">
+        select * from book
+        where 1 = 1
+        <if test="bookId != null and bookId != null">
+            and book_id != #{bookId}
+        </if>
+        <if test="name != null and name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+    </select>
+
+    <select id = "getBookByPojo" resultType="Book" parameterType="Book">
+        select book_id as bookId,
+        name,
+        number
+        from book
+        <where>
+            <if test="@Ognl@isNotEmpty(bookId)">
+                and book_id = #{bookId}
+            </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <update id = "updateBookByPojo" parameterType="Book">
+        update book
+        <set>
+            <if test="@Ognl@isNotEmpty(name)">
+                name = #{name},
+            </if>
+            <if test="@Ognl@isNotEmpty(number)">
+                number = #{number},
+            </if>
+            <if test="@Ognl@isNotEmpty(detail)">
+                detail = #{detail},
+            </if>
+        </set>
+        where book_id = #{bookId}
+    </update>
+
+    <insert id = "bathInsertBook" parameterType="Book" useGeneratedKeys="true" keyProperty="bookId" keyColumn="book_id">
+        insert into book
+        (name, number, detail)
+        values
+        <foreach collection="list" item="book" separator="," >
+            (
+            #{book.name},
+            #{book.number},
+            #{book.detail}
+            )
+        </foreach>
+    </insert>
+
+    <select id = "queryBookByIdOrName" parameterType="Book" resultType="Book">
+        select * from book
+        where 1 = 1
+        <choose>
+            <when test="bookId != null">
+                and book_id = #{bookId}
+            </when>
+            <when test="name != null and name != '' ">
+                and name = #{name}
+            </when>
+            <otherwise>
+                and 1 = 2
+            </otherwise>
+        </choose>
+    </select>
 </mapper>

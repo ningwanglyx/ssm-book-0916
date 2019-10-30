@@ -1,6 +1,7 @@
 package com.ke.service;
 
 import com.ke.pojo.Book;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,10 +12,11 @@ import java.util.List;
  * @Modified By:
  */
 public interface BookService {
-    Book getBookById(Integer id);
+    Book getBookById(Integer bookId);
     List<Book> getBookList(int offset, int limit);
     int addBook(Book book);
     int updateBook(Book book);
     int deleteBookById(Integer id);
+
 
 }

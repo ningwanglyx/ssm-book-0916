@@ -12,6 +12,16 @@ public class Book {
     private Integer number;
     private String detail;
 
+    public Book(){
+
+    }
+    public Book(String name, Integer number, String detail){
+        this.name = name;
+        this.number = number;
+        this.detail = detail;
+    }
+
+
     public Integer getBookId() {
         return bookId;
     }

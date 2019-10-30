@@ -22,12 +22,6 @@
     <!-- 2. 配置数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <!--配置数据库连接池属性-->
-        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-        <property name="maxActive" value="${jdbc.maxActive}"></property>
-        <property name="initialSize" value="${jdbc.initialSize}"></property>
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
@@ -39,13 +33,6 @@
     <!-- 3. 配置SqlSessionFactory对象 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--配置Mybatis全局配置文件： mybatis-config.xml-->
-        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
-        <!--注入数据库连接池-->
-        <property name="dataSource" ref="dataSource"></property>
-        <!--扫描pojo包，使用别名-->
-        <property name="typeAliasesPackage" value="com.ke.pojo"></property>
-        <!--扫描sql配置文件：mapper需要的xml文件-->
-        <property name="mapperLocations" value="classpath:mapper/**.xml"></property>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--注入数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
@@ -60,7 +47,6 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--给出需要扫描的mapper接口包-->
         <property name="basePackage" value="com.ke.mapper"/>
-        <property name="basePackage" value="com.ke.mapper"></property>
     </bean>
 
     <!--二 service层配置声明式事务-->

@@ -15,7 +15,6 @@ import java.util.List;
  * @Modified By:
  */
 @Service
-@Transactional
 public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
@@ -31,20 +30,23 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public int addBook(Book book) {
         int num = this.bookMapper.addBook(book);
         return num;
     }
 
     @Override
+    @Transactional
     public int updateBook(Book book) {
         int num = this.bookMapper.updateBook(book);
         return num;
     }
 
     @Override
-    public int deleteBookById(Integer id) {
-        int num = this.bookMapper.deleteBookById(id);
+    @Transactional
+    public int deleteBookById(Integer bookId) {
+        int num = this.bookMapper.deleteBookById(bookId);
         return num;
     }
 }

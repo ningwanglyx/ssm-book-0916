@@ -14,9 +14,18 @@ import java.util.List;
  */
 @Repository
 public interface BookMapper {
-    Book queryBookById(Integer id);
+    Book queryBookById(Integer bookId);
     List<Book> queryBookList(@Param("offset") int offset, @Param("limit") int limit);
     int addBook(Book book);
     int updateBook(Book book);
     int deleteBookById(Integer id);
+    List<Book> getBookByIdAndName(@Param("bookId") Integer bookId, @Param("name") String name);
+
+    List<Book> getBookByPojo(Book book);
+
+    int updateBookByPojo(Book book);
+
+    int bathInsertBook(List<Book> books);
+
+    Book queryBookByIdOrName(Book book);
 }
