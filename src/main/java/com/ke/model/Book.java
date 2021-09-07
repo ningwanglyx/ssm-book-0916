@@ -1,4 +1,4 @@
-package com.ke.pojo;
+package com.ke.model;
 
 /**
  * @Author: YangxingLiu
@@ -11,6 +11,7 @@ public class Book {
     private String name;
     private Integer number;
     private String detail;
+    private Integer itemId;
 
     public Book(){
 
@@ -21,6 +22,13 @@ public class Book {
         this.detail = detail;
     }
 
+    public Integer getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
+    }
 
     public Integer getBookId() {
         return bookId;
@@ -54,13 +62,4 @@ public class Book {
         this.detail = detail;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", name='" + name + '\'' +
-                ", number=" + number +
-                ", detail='" + detail + '\'' +
-                '}';
-    }
 }

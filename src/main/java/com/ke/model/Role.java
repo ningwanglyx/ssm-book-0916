@@ -1,4 +1,4 @@
-package com.ke.pojo;
+package com.ke.model;
 
 import java.io.Serializable;
 

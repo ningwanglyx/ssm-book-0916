@@ -1,6 +1,6 @@
 package com.ke.mapper;
 
-import com.ke.pojo.Book;
+import com.ke.model.Book;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Repository
 public interface BookMapper {
-    Book queryBookById(Integer bookId);
+    Book queryBookById(@Param("bookId") Integer bookId);
     List<Book> queryBookList(@Param("offset") int offset, @Param("limit") int limit);
     int addBook(Book book);
     int updateBook(Book book);
@@ -28,4 +28,6 @@ public interface BookMapper {
     int bathInsertBook(List<Book> books);
 
     Book queryBookByIdOrName(Book book);
+
+    List<String> getNameList();
 }

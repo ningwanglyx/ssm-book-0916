@@ -1,8 +1,7 @@
-package com.ke.controller;
+package com.ke.web.controller;
 
-import com.ke.pojo.Book;
-import com.ke.service.BookService;
-import com.ke.service.BookService;
+import com.ke.model.Book;
+import com.ke.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,7 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
     @Autowired
-    private BookService bookService;
+    private IBookService bookService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public  String toBookList(Model model){
@@ -58,4 +57,5 @@ public class BookController {
 
         return i>0? "seccess":"error";
     }
+
 }

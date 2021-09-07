@@ -38,7 +38,7 @@
     <select id = "getBookByIdAndName" resultType="Book">
         select * from book
         where 1 = 1
-        <if test="bookId != null and bookId != null">
+        <if test="bookId != '' and bookId != null">
             and book_id != #{bookId}
         </if>
         <if test="name != null and name != null">
@@ -104,5 +104,9 @@
                 and 1 = 2
             </otherwise>
         </choose>
+    </select>
+
+    <select id = "getNameList" resultType="string">
+        select name from book where name like 'hhh%'
     </select>
 </mapper>
